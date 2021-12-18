@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+  const [count, setCount] = useState(0);
+  const [devidable, setDevidable] = useState();
+  const onClick = () => setCount(count + 1);
+  const onClick2 = () => setCount(count - 1);
+  const onClick3 = () => setCount((count) => count * 2);
+  const onClick4 = () =>  {count % 3 ===0?setDevidable(true):setDevidable(false)}
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <button onClick={onClick}>increment</button>
+      <button onClick={onClick2}>decrement</button>
+      <button onClick={onClick3}>double</button>
+      <button onClick={onClick4}>/by3</button>
+      <p>Counter:{count}</p>
+      <p>Devidable?:{devidable? "Yes":count }</p>
     </div>
   );
 }
