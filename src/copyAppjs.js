@@ -7,8 +7,8 @@ const App = () => {
   const onClick = () => setCount(count + 1);
   const onClick2 = () => setCount(count - 1);
   const onClick3 = () => setCount((count) => count * 2);
-  const onClick4 = () =>  {count % 3 ===0?setDevidable(true):setDevidable(false)}
-  
+  const onClick4 = () => { count % 3 === 0 ? setDevidable(true) : setDevidable(false) }
+
   return (
     <div>
       <button onClick={onClick}>increment</button>
@@ -16,7 +16,7 @@ const App = () => {
       <button onClick={onClick3}>double</button>
       <button onClick={onClick4}>/by3</button>
       <p>Counter:{count}</p>
-      <p>Devidable?:{devidable? "Yes":count }</p>
+      <p>Devidable?:{devidable ? "Yes" : count}</p>
     </div>
   );
 }
