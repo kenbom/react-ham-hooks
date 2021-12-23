@@ -9,7 +9,7 @@ const App = () => {
 
   const onClick = (event) => {
     event.preventDefault()
-    dispatch({ type: "CREATE_EVENT", title:title, body:body })
+    dispatch({ type: "CREATE_EVENT", title: title, body: body })
     setTitle('')
     setBody('')
   }
@@ -21,7 +21,7 @@ const App = () => {
       <form>
         <div className="form-group">
           <label htmlFor="formEventTitle">Title</label>
-          <input className="form-control" id="formEventTitle" value={title} onChange={(e) => setTitle(e.target.value) }></input>
+          <input className="form-control" id="formEventTitle" value={title} onChange={(e) => setTitle(e.target.value)}></input>
           <label htmlFor="formEventBody: ;">Body</label>
           <textarea className="form-control" id="formEventBody" value={body} onChange={e => setBody(e.target.value)}></textarea>
         </div>
@@ -38,9 +38,21 @@ const App = () => {
             <th></th>
           </tr>
         </thead>
+        <tbody>
+          {
+            state.map((item, index) => {return (
+              <tr key={index}>
+                <td>{item.id}</td>
+                <td>{item.title}</td>
+                <td>{item.body}</td>
+              </tr>)
+            })
+          }
+        </tbody>
       </table>
     </div>
   );
+
 };
 
 export default App;
