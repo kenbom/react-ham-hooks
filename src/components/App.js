@@ -17,9 +17,11 @@ const App = () => {
 
   const onClickDeleteAll = (event) => {
     event.preventDefault();
-    dispatch({ type: "DELETE_ALLL_EVENTS" });
+    const result = window.confirm('Want to delete all?')
+    if(result)dispatch({ type: "DELETE_ALLL_EVENTS" });
   };
-
+    
+  const creatable = title === "" || body === ""
   console.log(state);
 
   return (
@@ -43,10 +45,10 @@ const App = () => {
           ></textarea>
         </div>
       </form>
-      <button className="btn btn-primary" onClick={onClickMake}>
+      <button className="btn btn-primary" onClick={onClickMake} disabled={creatable}>
         Make event
       </button>
-      <button className="btn btn-secondary" onClick={onClickDeleteAll}>Delete all events</button>
+      <button className="btn btn-secondary" onClick={onClickDeleteAll} disabled={state.length === 0}>Delete all events</button>
       <h4>Event List</h4>
       <table className="table table-hover">
         <thead>
@@ -58,7 +60,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {state.map((item, index) => (<Event item={item} index={index} dispatch={dispatch}/>))}
+          {state.map((item, index) => (<Event item={item} index={index} dispatch={dispatch} />))}
         </tbody>
       </table>
     </div>
